@@ -1,0 +1,980 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="JDD" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="序言  有需求，才会去创造。  网络上有许多关于接口回调的文章，各有千秋，理解角度也分别不同。今天本人希望从需求角度，能让一些对于接口回调不了解，或者概念模糊的人理解一下。本来是想写一下回调的概念。但是我发现这样不利于理解，所以这里我就不赘述概念了，大家看这篇博文也不要带着固定的思维去理解，希望大家举一反三吧。这里我从一个需求的角度让大家理解一下回调的逻辑流程。
+目的  java中接口回调随处可见">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈回调接口">
+<meta property="og:url" content="http://jddjj.github.io/2013/07/13/callback/index.html">
+<meta property="og:site_name" content="JDD">
+<meta property="og:description" content="序言  有需求，才会去创造。  网络上有许多关于接口回调的文章，各有千秋，理解角度也分别不同。今天本人希望从需求角度，能让一些对于接口回调不了解，或者概念模糊的人理解一下。本来是想写一下回调的概念。但是我发现这样不利于理解，所以这里我就不赘述概念了，大家看这篇博文也不要带着固定的思维去理解，希望大家举一反三吧。这里我从一个需求的角度让大家理解一下回调的逻辑流程。
+目的  java中接口回调随处可见">
+<meta property="og:image" content="http://7xsffo.com1.z0.glb.clouddn.com/callback1.png">
+<meta property="og:updated_time" content="2016-03-31T05:35:49.667Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="浅谈回调接口">
+<meta name="twitter:description" content="序言  有需求，才会去创造。  网络上有许多关于接口回调的文章，各有千秋，理解角度也分别不同。今天本人希望从需求角度，能让一些对于接口回调不了解，或者概念模糊的人理解一下。本来是想写一下回调的概念。但是我发现这样不利于理解，所以这里我就不赘述概念了，大家看这篇博文也不要带着固定的思维去理解，希望大家举一反三吧。这里我从一个需求的角度让大家理解一下回调的逻辑流程。
+目的  java中接口回调随处可见">
+<meta name="twitter:image" content="http://7xsffo.com1.z0.glb.clouddn.com/callback1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 浅谈回调接口 | JDD </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">JDD</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Supsercell</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-heartbeat fa-fw"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                浅谈回调接口
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-07-13T20:46:25+08:00" content="2013-07-13">
+              2013-07-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Android/" itemprop="url" rel="index">
+                    <span itemprop="name">Android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p>  有需求，才会去创造。<br>  网络上有许多关于接口回调的文章，各有千秋，理解角度也分别不同。今天本人希望从需求角度，能让一些对于接口回调不了解，或者概念模糊的人理解一下。本来是想写一下回调的概念。但是我发现这样不利于理解，所以这里我就不赘述概念了，大家看这篇博文也不要带着固定的思维去理解，希望大家举一反三吧。这里我从一个需求的角度让大家理解一下回调的逻辑流程。</p>
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>  java中接口回调随处可见，比如说各种监听，onClickListener，而最近比较热的Mvp框架，其中view层抽象接口，也属于接口回调，掌握他，你会发现，逻辑世界还是很神奇的。<br>                                                                              <a id="more"></a></p>
+<h1 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h1><ol>
+<li>多线程之间数据同步问题<br> 更具象的说法，举个例子，我前段日子有个需求，我需要处理一些字段，但是这些字段里有一个值是北京时间，而北京时间是需要异步获取，这样我希望的就是获取到北京时间后，再处理。这里我就用了接口回调。  <h1 id="流程示范"><a href="#流程示范" class="headerlink" title="流程示范"></a>流程示范</h1></li>
+</ol>
+<hr>
+<h2 id="编写功能模块"><a href="#编写功能模块" class="headerlink" title="编写功能模块"></a>编写功能模块</h2><p><code>功能类A</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package com.dong.test;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> *</span><br><span class="line"> * @author JDD 这是一个功能类 假设他用来处理一些字段</span><br><span class="line"> *</span><br><span class="line"> */</span><br><span class="line">public class ManageFields &#123;</span><br><span class="line">	String str;</span><br><span class="line">	/**</span><br><span class="line">	 * 用来处理字段的方法，而其中有一个字段是北京时间，需要开启异步线程获取时间后再进行一些逻辑处理</span><br><span class="line">	 */</span><br><span class="line">	public void doSomething(String string) &#123;</span><br><span class="line">		//这里我需要获取北京时间，处理的话比如说拼接一段字段在北京时间前面</span><br><span class="line">		 str = string;</span><br><span class="line">		//现在要获取北京时间，这个就是开启一个异步线程去获取，现在问题来了怎么获取它得到的异步时间并拼接起来的。这里就用到了回调</span><br><span class="line">		TimeUtil timeUtil = new TimeUtil();</span><br><span class="line">		timeUtil.getBjTime();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>功能类B</code></p>
+<pre><code>
+package com.dong.test;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Date;
+
+/**
+ *
+ * @author JDD 这个是个时间类 需要获取北京时间
+ *
+ */
+public class TimeUtil {
+
+    /**
+     * 开启异步线程去获取时间
+     */
+    public void getBjTime() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                URL url;
+                try {
+                    url = new URL("http://www.baidu.com");
+                    URLConnection uc = url.openConnection();// 生成连接对象
+                    uc.connect(); // 发出连接
+                    long ld = uc.getDate(); // 取得网站日期时间
+                    Date date = new Date(ld); // 转换为标准时间对象
+                    // 分别取得时间中的小时，分钟和秒，并输出
+                    long bjTime = date.getTime();
+
+                } catch (MalformedURLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } // 取得资源对象
+                catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+}
+</code></pre>
+So 问题来了，该怎将获取的时间同步给A呢？这里大家可以发散一下思维，onclick事件，触发机制，也就是回调机制，它是完成点击(获取到时间后)，执行回调函数 onClick(view v)(执行处理操作)。那这里我们将回调时间抽象成接口。
+
+## 编写接口 ##
+调时间抽象成接口。
+
+`抽象接口`
+<pre><code>
+package com.dong.test;
+
+/**
+ *
+ * @author JDD 时间回调接口 或者说就是监听时间获取
+ *
+ */
+public interface TimeListener {
+    //抽象方法，其中参数 就是获取到的时间
+    void manageTime(long bjTime);
+}</code></pre>
+
+<h2 id="改造模块实现回调"><a href="#改造模块实现回调" class="headerlink" title="改造模块实现回调"></a>改造模块实现回调</h2><p>首先时间获取模块B中应该有一个实现了TimeListener对象的引用，这里我们去重载一下其构造函数</p>
+<pre><code>
+package com.dong.test;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Date;
+
+/**
+ *
+ * @author JDD 这个是个时间类 需要获取北京时间
+ *
+ */
+public class TimeUtil {
+
+    TimeListener timeListener;
+    /**
+     * 这个是实现了TimeListener的对象的引用（其实就是ManageFileds的引用，这样就需要ManageFields类去实现接口）
+     * @param timeListener
+     */
+    public TimeUtil(TimeListener timeListener){
+        this.timeListener=timeListener;
+    }
+
+    /**
+     * 开启异步线程去获取时间
+     */
+    public  void getBjTime() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                URL url;
+                try {
+                    url = new URL("http://www.baidu.com");
+                    URLConnection uc = url.openConnection();// 生成连接对象
+                    uc.connect(); // 发出连接
+                    long ld = uc.getDate(); // 取得网站日期时间
+                    Date date = new Date(ld); // 转换为标准时间对象
+                    // 分别取得时间中的小时，分钟和秒，并输出
+                    long bjTime = date.getTime();
+                    //调用管理时间的接口
+                    timeListener.returnTime(bjTime);
+
+                } catch (MalformedURLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } // 取得资源对象
+                catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+}
+
+
+
+</code></pre>
+
+<p>管理字段的类就需要实现 TimeListener接口</p>
+<pre><code>
+package com.dong.test;
+
+
+/**
+ *
+ * @author JDD 这是一个功能类 假设他用来处理一些字段
+ *
+ */
+public class ManageFields implements TimeListener {
+    String str;
+    /**
+     * 用来处理字段的方法，而其中有一个字段是北京时间，需要开启异步线程获取时间后再进行一些逻辑处理
+     */
+    public void doSomething(String string) {
+        // 这里我需要获取北京时间，处理的话比如说拼接一段字段在北京时间前面
+         str = string;
+        // 现在要获取北京时间，这个就是开启一个异步线程去获取，并将this，也就是自己的引用传过去
+        TimeUtil timeUtil = new TimeUtil(this);
+        timeUtil.getBjTime();
+    }
+
+    /**
+     * 这里就是当异步线程获取到数据，调用timeListener.returnTime(bjTime)时，所回调的方法
+     */
+    @Override
+    public void returnTime(long bjTime) {
+        // TODO Auto-generated method stub
+        System.out.println(str+bjTime);
+    }
+}
+
+
+
+</code></pre>
+
+
+<h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><pre><code>
+package com.dong.test;
+
+public class TestCallBack {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        ManageFields manageFields1=new ManageFields();
+        ManageFields manageFields2=new ManageFields();
+
+        manageFields1.doSomething("现在北京时间是：");
+        manageFields2.doSomething("Now BeiJingTime is：");
+
+
+    }
+
+}
+
+</code></pre>
+
+<p>结果<br><figure class="highlight plain"><figcaption><span>BeiJingTime is：1459396779000</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">现在北京时间是：1459396780000</span><br></pre></td></tr></table></figure></p>
+<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p>下面你有个大概思路了，我们看一下流程图（viso制作）</p>
+<p><img src="http://7xsffo.com1.z0.glb.clouddn.com/callback1.png" alt="流程图"></p>
+<h2 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h2><p>当然 管理字段类还可以写成大家熟知的匿名内部类形式</p>
+<pre><code>
+package com.dong.test;
+
+/**
+ *
+ * @author JDD 这是一个功能类 假设他用来处理一些字段
+ *
+ */
+public class ManageFields implements TimeListener {
+    String str;
+        //匿名内部类实现
+    public void doSomething(String string) {
+        // 这里我需要获取北京时间，处理的话比如说拼接一段字段在北京时间前面
+         str = string;
+        // 现在要获取北京时间，这个就是开启一个异步线程去获取，并将this，也就是自己的引用传过去
+        TimeUtil timeUtil = new TimeUtil(new TimeListener() {
+
+            @Override
+            public void returnTime(long bjTime) {
+                // TODO Auto-generated method stub
+                System.out.println(str+bjTime);
+            }
+        });
+        timeUtil.getBjTime();
+    }
+}
+
+
+
+</code></pre>
+
+<h2 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h2><p>当然，你要是了解Rxjava,或者观察者模式，抑或hanlder等,都是可以实现这种需求的，但是，总有一种场景，有一种工具更配的来。就跟工具箱里的扳手一样，你有很多扳手，但是也有不同的螺丝，匹配的来的工具不是更给力么！<br>然而回调有时候不是必须的，因为有一个问题就是callbackhell-回调地狱，我的认知就是由于各种回调嵌套，导致工程可读性，可塑性差。所以大家也要两面性的看带问题！</p>
+<h2 id="源码"><a href="#源码" class="headerlink" title="源码"></a>源码</h2><p><a href="http://7xsffo.com1.z0.glb.clouddn.com/TestCallBack.rar" title="接口回调样例源码" target="_blank" rel="external">接口回调样例源码</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/03/28/InstantRun那些事/" rel="prev" title="InstantRun那些事">
+                InstantRun那些事 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="Jidongdong" />
+          <p class="site-author-name" itemprop="name">Jidongdong</p>
+          <p class="site-description motion-element" itemprop="description">New Bee!</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/jddjj" target="_blank">
+                  
+                    <i class="fa fa-github"></i> GitHub
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/3271164290?topnav=1&wvr=6&topsug=1&is_all=1" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 微博
+                  
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.jianshu.com/users/d252a27c8cd4/latest_articles" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> 简书
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        <div class="links-of-blogroll motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目的"><span class="nav-number">1.1.</span> <span class="nav-text">目的</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用场景"><span class="nav-number">2.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#流程示范"><span class="nav-number">3.</span> <span class="nav-text">流程示范</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写功能模块"><span class="nav-number">3.1.</span> <span class="nav-text">编写功能模块</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改造模块实现回调"><span class="nav-number">3.2.</span> <span class="nav-text">改造模块实现回调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试代码"><span class="nav-number">3.3.</span> <span class="nav-text">测试代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流程图"><span class="nav-number">3.4.</span> <span class="nav-text">流程图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓展"><span class="nav-number">3.5.</span> <span class="nav-text">拓展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后话"><span class="nav-number">3.6.</span> <span class="nav-text">后话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码"><span class="nav-number">3.7.</span> <span class="nav-text">源码</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jidongdong</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=0.5.0"></script>
+
+
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

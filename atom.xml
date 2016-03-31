@@ -47,4 +47,260 @@
     
   </entry>
   
+  <entry>
+    <title>浅谈回调接口</title>
+    <link href="http://jddjj.github.io/2013/07/13/callback/"/>
+    <id>http://jddjj.github.io/2013/07/13/callback/</id>
+    <published>2013-07-13T12:46:25.000Z</published>
+    <updated>2016-03-31T05:35:49.667Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot; title=&quot;序言&quot;&gt;&lt;/a&gt;序言&lt;/h1&gt;&lt;p&gt;  有需求，才会去创造。&lt;br&gt;  网络上有许多关于接口回调的文章，各有千秋，理解角度也分别不同。今天本人希望从需求角度，能让一些对于接口回调不了解，或者概念模糊的人理解一下。本来是想写一下回调的概念。但是我发现这样不利于理解，所以这里我就不赘述概念了，大家看这篇博文也不要带着固定的思维去理解，希望大家举一反三吧。这里我从一个需求的角度让大家理解一下回调的逻辑流程。&lt;/p&gt;
+&lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h2&gt;&lt;p&gt;  java中接口回调随处可见，比如说各种监听，onClickListener，而最近比较热的Mvp框架，其中view层抽象接口，也属于接口回调，掌握他，你会发现，逻辑世界还是很神奇的。&lt;br&gt;                                                                              &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;应用场景&quot;&gt;&lt;a href=&quot;#应用场景&quot; class=&quot;headerlink&quot; title=&quot;应用场景&quot;&gt;&lt;/a&gt;应用场景&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;多线程之间数据同步问题&lt;br&gt; 更具象的说法，举个例子，我前段日子有个需求，我需要处理一些字段，但是这些字段里有一个值是北京时间，而北京时间是需要异步获取，这样我希望的就是获取到北京时间后，再处理。这里我就用了接口回调。  &lt;h1 id=&quot;流程示范&quot;&gt;&lt;a href=&quot;#流程示范&quot; class=&quot;headerlink&quot; title=&quot;流程示范&quot;&gt;&lt;/a&gt;流程示范&lt;/h1&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id=&quot;编写功能模块&quot;&gt;&lt;a href=&quot;#编写功能模块&quot; class=&quot;headerlink&quot; title=&quot;编写功能模块&quot;&gt;&lt;/a&gt;编写功能模块&lt;/h2&gt;&lt;p&gt;&lt;code&gt;功能类A&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;package com.dong.test;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; * @author JDD 这是一个功能类 假设他用来处理一些字段&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public class ManageFields &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	String str;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	/**&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 * 用来处理字段的方法，而其中有一个字段是北京时间，需要开启异步线程获取时间后再进行一些逻辑处理&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	 */&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	public void doSomething(String string) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		//这里我需要获取北京时间，处理的话比如说拼接一段字段在北京时间前面&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		 str = string;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		//现在要获取北京时间，这个就是开启一个异步线程去获取，现在问题来了怎么获取它得到的异步时间并拼接起来的。这里就用到了回调&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		TimeUtil timeUtil = new TimeUtil();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		timeUtil.getBjTime();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;code&gt;功能类B&lt;/code&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+package com.dong.test;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Date;
+
+/**
+ *
+ * @author JDD 这个是个时间类 需要获取北京时间
+ *
+ */
+public class TimeUtil {
+
+    /**
+     * 开启异步线程去获取时间
+     */
+    public void getBjTime() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                URL url;
+                try {
+                    url = new URL(&quot;http://www.baidu.com&quot;);
+                    URLConnection uc = url.openConnection();// 生成连接对象
+                    uc.connect(); // 发出连接
+                    long ld = uc.getDate(); // 取得网站日期时间
+                    Date date = new Date(ld); // 转换为标准时间对象
+                    // 分别取得时间中的小时，分钟和秒，并输出
+                    long bjTime = date.getTime();
+
+                } catch (MalformedURLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } // 取得资源对象
+                catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+So 问题来了，该怎将获取的时间同步给A呢？这里大家可以发散一下思维，onclick事件，触发机制，也就是回调机制，它是完成点击(获取到时间后)，执行回调函数 onClick(view v)(执行处理操作)。那这里我们将回调时间抽象成接口。
+
+## 编写接口 ##
+调时间抽象成接口。
+
+`抽象接口`
+&lt;pre&gt;&lt;code&gt;
+package com.dong.test;
+
+/**
+ *
+ * @author JDD 时间回调接口 或者说就是监听时间获取
+ *
+ */
+public interface TimeListener {
+    //抽象方法，其中参数 就是获取到的时间
+    void manageTime(long bjTime);
+}&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;改造模块实现回调&quot;&gt;&lt;a href=&quot;#改造模块实现回调&quot; class=&quot;headerlink&quot; title=&quot;改造模块实现回调&quot;&gt;&lt;/a&gt;改造模块实现回调&lt;/h2&gt;&lt;p&gt;首先时间获取模块B中应该有一个实现了TimeListener对象的引用，这里我们去重载一下其构造函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+package com.dong.test;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.Date;
+
+/**
+ *
+ * @author JDD 这个是个时间类 需要获取北京时间
+ *
+ */
+public class TimeUtil {
+
+    TimeListener timeListener;
+    /**
+     * 这个是实现了TimeListener的对象的引用（其实就是ManageFileds的引用，这样就需要ManageFields类去实现接口）
+     * @param timeListener
+     */
+    public TimeUtil(TimeListener timeListener){
+        this.timeListener=timeListener;
+    }
+
+    /**
+     * 开启异步线程去获取时间
+     */
+    public  void getBjTime() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                URL url;
+                try {
+                    url = new URL(&quot;http://www.baidu.com&quot;);
+                    URLConnection uc = url.openConnection();// 生成连接对象
+                    uc.connect(); // 发出连接
+                    long ld = uc.getDate(); // 取得网站日期时间
+                    Date date = new Date(ld); // 转换为标准时间对象
+                    // 分别取得时间中的小时，分钟和秒，并输出
+                    long bjTime = date.getTime();
+                    //调用管理时间的接口
+                    timeListener.returnTime(bjTime);
+
+                } catch (MalformedURLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                } // 取得资源对象
+                catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+    }
+
+}
+
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;管理字段的类就需要实现 TimeListener接口&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+package com.dong.test;
+
+
+/**
+ *
+ * @author JDD 这是一个功能类 假设他用来处理一些字段
+ *
+ */
+public class ManageFields implements TimeListener {
+    String str;
+    /**
+     * 用来处理字段的方法，而其中有一个字段是北京时间，需要开启异步线程获取时间后再进行一些逻辑处理
+     */
+    public void doSomething(String string) {
+        // 这里我需要获取北京时间，处理的话比如说拼接一段字段在北京时间前面
+         str = string;
+        // 现在要获取北京时间，这个就是开启一个异步线程去获取，并将this，也就是自己的引用传过去
+        TimeUtil timeUtil = new TimeUtil(this);
+        timeUtil.getBjTime();
+    }
+
+    /**
+     * 这里就是当异步线程获取到数据，调用timeListener.returnTime(bjTime)时，所回调的方法
+     */
+    @Override
+    public void returnTime(long bjTime) {
+        // TODO Auto-generated method stub
+        System.out.println(str+bjTime);
+    }
+}
+
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;h2 id=&quot;测试代码&quot;&gt;&lt;a href=&quot;#测试代码&quot; class=&quot;headerlink&quot; title=&quot;测试代码&quot;&gt;&lt;/a&gt;测试代码&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;
+package com.dong.test;
+
+public class TestCallBack {
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        ManageFields manageFields1=new ManageFields();
+        ManageFields manageFields2=new ManageFields();
+
+        manageFields1.doSomething(&quot;现在北京时间是：&quot;);
+        manageFields2.doSomething(&quot;Now BeiJingTime is：&quot;);
+
+
+    }
+
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;结果&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;figcaption&gt;&lt;span&gt;BeiJingTime is：1459396779000&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;现在北京时间是：1459396780000&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h2 id=&quot;流程图&quot;&gt;&lt;a href=&quot;#流程图&quot; class=&quot;headerlink&quot; title=&quot;流程图&quot;&gt;&lt;/a&gt;流程图&lt;/h2&gt;&lt;p&gt;下面你有个大概思路了，我们看一下流程图（viso制作）&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xsffo.com1.z0.glb.clouddn.com/callback1.png&quot; alt=&quot;流程图&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;拓展&quot;&gt;&lt;a href=&quot;#拓展&quot; class=&quot;headerlink&quot; title=&quot;拓展&quot;&gt;&lt;/a&gt;拓展&lt;/h2&gt;&lt;p&gt;当然 管理字段类还可以写成大家熟知的匿名内部类形式&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;
+package com.dong.test;
+
+/**
+ *
+ * @author JDD 这是一个功能类 假设他用来处理一些字段
+ *
+ */
+public class ManageFields implements TimeListener {
+    String str;
+        //匿名内部类实现
+    public void doSomething(String string) {
+        // 这里我需要获取北京时间，处理的话比如说拼接一段字段在北京时间前面
+         str = string;
+        // 现在要获取北京时间，这个就是开启一个异步线程去获取，并将this，也就是自己的引用传过去
+        TimeUtil timeUtil = new TimeUtil(new TimeListener() {
+
+            @Override
+            public void returnTime(long bjTime) {
+                // TODO Auto-generated method stub
+                System.out.println(str+bjTime);
+            }
+        });
+        timeUtil.getBjTime();
+    }
+}
+
+
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&quot;后话&quot;&gt;&lt;a href=&quot;#后话&quot; class=&quot;headerlink&quot; title=&quot;后话&quot;&gt;&lt;/a&gt;后话&lt;/h2&gt;&lt;p&gt;当然，你要是了解Rxjava,或者观察者模式，抑或hanlder等,都是可以实现这种需求的，但是，总有一种场景，有一种工具更配的来。就跟工具箱里的扳手一样，你有很多扳手，但是也有不同的螺丝，匹配的来的工具不是更给力么！&lt;br&gt;然而回调有时候不是必须的，因为有一个问题就是callbackhell-回调地狱，我的认知就是由于各种回调嵌套，导致工程可读性，可塑性差。所以大家也要两面性的看带问题！&lt;/p&gt;
+&lt;h2 id=&quot;源码&quot;&gt;&lt;a href=&quot;#源码&quot; class=&quot;headerlink&quot; title=&quot;源码&quot;&gt;&lt;/a&gt;源码&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://7xsffo.com1.z0.glb.clouddn.com/TestCallBack.rar&quot; title=&quot;接口回调样例源码&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;接口回调样例源码&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;序言&quot;&gt;&lt;a href=&quot;#序言&quot; class=&quot;headerlink&quot; title=&quot;序言&quot;&gt;&lt;/a&gt;序言&lt;/h1&gt;&lt;p&gt;  有需求，才会去创造。&lt;br&gt;  网络上有许多关于接口回调的文章，各有千秋，理解角度也分别不同。今天本人希望从需求角度，能让一些对于接口回调不了解，或者概念模糊的人理解一下。本来是想写一下回调的概念。但是我发现这样不利于理解，所以这里我就不赘述概念了，大家看这篇博文也不要带着固定的思维去理解，希望大家举一反三吧。这里我从一个需求的角度让大家理解一下回调的逻辑流程。&lt;/p&gt;
+&lt;h2 id=&quot;目的&quot;&gt;&lt;a href=&quot;#目的&quot; class=&quot;headerlink&quot; title=&quot;目的&quot;&gt;&lt;/a&gt;目的&lt;/h2&gt;&lt;p&gt;  java中接口回调随处可见，比如说各种监听，onClickListener，而最近比较热的Mvp框架，其中view层抽象接口，也属于接口回调，掌握他，你会发现，逻辑世界还是很神奇的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Android" scheme="http://jddjj.github.io/categories/Android/"/>
+    
+    
+      <category term="Android" scheme="http://jddjj.github.io/tags/Android/"/>
+    
+  </entry>
+  
 </feed>
