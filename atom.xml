@@ -66,7 +66,7 @@
     <link href="http://jddjj.github.io/2016/03/28/InstantRun%E9%82%A3%E4%BA%9B%E4%BA%8B/"/>
     <id>http://jddjj.github.io/2016/03/28/InstantRun那些事/</id>
     <published>2016-03-28T08:45:43.667Z</published>
-    <updated>2016-03-30T02:06:47.732Z</updated>
+    <updated>2016-04-05T02:29:36.214Z</updated>
     
     <content type="html">&lt;p&gt;　　刚入门的Android学员，现在应该还在玩转Eclipse，虽然现在大部分开发人员已经手持Android Studio ,但人们对新事物的接受总是需要缓冲的，并且有的人“恋旧”，并不是说不好，但是在技术更新迭代这么快的时代，不一定好，尝试总是没错的，你可以不做第一个吃螃蟹的人，但是有好多人说，螃蟹是美味的，那你就应该试试了。Android系统是由谷歌研发并维护，而作为谷歌推出的Android Studio 是自己个儿的亲儿子，广大开发人员不用去担心它的更新迭代是否被放弃。而现在的Android Studio已经进入2.0.0-beta6 版本，稳定性和扩展性已经非常强大，玩过Eclipse的都知道，经常会碰到缺少一些sdk的时候，这个时候我们就需要打开SDK Manager 去下载，这个界面大家一定很熟悉&lt;br&gt;&lt;img src=&quot;http://7xsffo.com1.z0.glb.clouddn.com/instantrun1.png&quot; alt=&quot;&quot;&gt;&lt;br&gt;  &lt;center&gt;&lt;strong&gt;&lt;em&gt;SDK Manager&lt;/em&gt;&lt;/strong&gt;&lt;/center&gt;&lt;br&gt;               &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;，但是你有没有为下载过慢烦恼过，又找不到好的翻墙技巧，还有就是插件更新，经常需要去网络上下载离线包，查看各种教程去安装，还有用惯了Android Studio 感觉Eclipse界面好丑。这里并不是去贬低Eclipse，存在即合理，强大的扩展性和开源性，使其仍是开发Jsp，封装cocos2dx等得不可或缺的工具。并且现在仍有一些长久的项目，是eclipse开发的，应为项目过大并且已经成熟，并不适合迁移至Android Studio。      但是，对于以后从事Android开发，和新入门的同学，掌握Android Studio吧！你不会后悔的！说到这里，给大家附上一个链接，最新版本的Android开发相关工具都可以去这里下&lt;a href=&quot;http://www.androiddevtools.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AndroidDevTools&lt;/a&gt;;配置Android Studio方面就不进行赘述了，大家下载完可以去网上搜索很多好玩的插件，ButterKnife,CodeGlance,LifeSorter等等有助于编码的插件&lt;br&gt;&lt;img src=&quot;http://7xsffo.com1.z0.glb.clouddn.com/instantrun6.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
@@ -90,6 +90,8 @@
     
     </summary>
     
+    
+      <category term="AndroidDevTools" scheme="http://jddjj.github.io/tags/AndroidDevTools/"/>
     
   </entry>
   
