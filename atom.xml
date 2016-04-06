@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jddjj.github.io/"/>
-  <updated>2016-04-01T05:38:51.504Z</updated>
+  <updated>2016-04-06T03:47:02.410Z</updated>
   <id>http://jddjj.github.io/</id>
   
   <author>
@@ -14,6 +14,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="http://jddjj.github.io/2016/04/06/WhyDagger2/"/>
+    <id>http://jddjj.github.io/2016/04/06/WhyDagger2/</id>
+    <published>2016-04-06T03:47:02.383Z</published>
+    <updated>2016-04-06T03:47:02.410Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;em&gt;两利相权取其重，两弊相衡取其轻&lt;/em&gt;&lt;br&gt;&lt;em&gt;——古语&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;后语&quot;&gt;&lt;a href=&quot;#后语&quot; class=&quot;headerlink&quot; title=&quot;后语&quot;&gt;&lt;/a&gt;后语&lt;/h2&gt;&lt;p&gt;抄录古诗一首，愿大家在这个春天里保持好的心情，身体健康。&lt;/p&gt;
+&lt;center&gt;&lt;pre&gt;&lt;code&gt;&lt;br&gt;钱塘湖春行&lt;br&gt;白居易&lt;br&gt;孤山寺北贾亭西，水面初平云脚低。&lt;br&gt;几处早莺争暖树，谁家新燕啄春泥。&lt;br&gt;乱花渐欲迷人眼，浅草才能没马蹄。&lt;br&gt;最爱湖东行不足，绿杨阴里白沙堤。&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/center&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;em&gt;两利相权取其重，两弊相衡取其轻&lt;/em&gt;&lt;br&gt;&lt;em&gt;——古语&lt;/em&gt;&lt;/p&gt;
+&lt;h2 id=&quot;后语&quot;&gt;&lt;a href=&quot;#后语&quot; class=&quot;headerlink&quot; title=&quot;后语&quot;&gt;&lt;/a&gt;后语&lt;/h2&gt;&lt;p&gt;抄录古诗一首，愿大家在这个春天里保持好的心
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>浅谈回调接口</title>
