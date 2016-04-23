@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android,Dagger2," />
+  <meta name="keywords" content="Android,MVP,RxJava," />
 
 
 
@@ -59,19 +59,39 @@
 
 
 
-<meta name="description" content="两利相权取其重，两弊相衡取其轻——古语
-序言 　　权衡利弊，从善而为。我们在抉择一件事情之前，都需要去因地制宜。凡是不能太过武断，亦不能太拖沓。">
+<meta name="description" content="RxJoke
+一个集成Rxjava,Retrofit,Mvp,以及Dagger2的开源项目
+
+ 
+
+前言最近一直在研究和学习，也一直有想做一个开源项目，将消化的知识运用出来，俗话说“纸上得来终觉浅，绝知此事要躬行”，所以就做了这样一个项目，结合了一些开源框架和三方库，比如大家熟知的MVP,Rxjava等，做了一个笑话大全。力争“简约而不简单吧”。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WhyDagger2">
-<meta property="og:url" content="http://jddjj.github.io/2016/04/06/WhyDagger2/index.html">
+<meta property="og:title" content="RxJoke:RxJava+MVP的开源项目">
+<meta property="og:url" content="http://jddjj.github.io/2016/04/23/RxJoke/index.html">
 <meta property="og:site_name" content="JDD">
-<meta property="og:description" content="两利相权取其重，两弊相衡取其轻——古语
-序言 　　权衡利弊，从善而为。我们在抉择一件事情之前，都需要去因地制宜。凡是不能太过武断，亦不能太拖沓。">
-<meta property="og:updated_time" content="2016-04-23T08:32:35.640Z">
+<meta property="og:description" content="RxJoke
+一个集成Rxjava,Retrofit,Mvp,以及Dagger2的开源项目
+
+ 
+
+前言最近一直在研究和学习，也一直有想做一个开源项目，将消化的知识运用出来，俗话说“纸上得来终觉浅，绝知此事要躬行”，所以就做了这样一个项目，结合了一些开源框架和三方库，比如大家熟知的MVP,Rxjava等，做了一个笑话大全。力争“简约而不简单吧”。">
+<meta property="og:image" content="http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_ic_launcher.png">
+<meta property="og:image" content="http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_pro.png">
+<meta property="og:image" content="http://img0.tuicool.com/JfQ73eI.gif">
+<meta property="og:image" content="http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_copyright.png">
+<meta property="og:image" content="http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_main.png">
+<meta property="og:image" content="http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_icon.png">
+<meta property="og:image" content="http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_error.png">
+<meta property="og:updated_time" content="2016-04-23T08:34:08.796Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WhyDagger2">
-<meta name="twitter:description" content="两利相权取其重，两弊相衡取其轻——古语
-序言 　　权衡利弊，从善而为。我们在抉择一件事情之前，都需要去因地制宜。凡是不能太过武断，亦不能太拖沓。">
+<meta name="twitter:title" content="RxJoke:RxJava+MVP的开源项目">
+<meta name="twitter:description" content="RxJoke
+一个集成Rxjava,Retrofit,Mvp,以及Dagger2的开源项目
+
+ 
+
+前言最近一直在研究和学习，也一直有想做一个开源项目，将消化的知识运用出来，俗话说“纸上得来终觉浅，绝知此事要躬行”，所以就做了这样一个项目，结合了一些开源框架和三方库，比如大家熟知的MVP,Rxjava等，做了一个笑话大全。力争“简约而不简单吧”。">
+<meta name="twitter:image" content="http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_ic_launcher.png">
 
 
 
@@ -89,7 +109,7 @@
   };
 </script>
 
-  <title> WhyDagger2 | JDD </title>
+  <title> RxJoke:RxJava+MVP的开源项目 | JDD </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -219,7 +239,7 @@
             
             
               
-                WhyDagger2
+                RxJoke:RxJava+MVP的开源项目
               
             
           </h1>
@@ -231,8 +251,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-06T20:46:25+08:00" content="2016-04-06">
-              2016-04-06
+            <time itemprop="dateCreated" datetime="2016-04-23T16:27:25+08:00" content="2016-04-23">
+              2016-04-23
             </time>
           </span>
 
@@ -261,8 +281,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/06/WhyDagger2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/06/WhyDagger2/" itemprop="commentsCount"></span>
+                <a href="/2016/04/23/RxJoke/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/23/RxJoke/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -284,16 +304,68 @@
       
 
       
-        <p><em>两利相权取其重，两弊相衡取其轻</em><br><em>——古语</em></p>
-<h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p> 　　权衡利弊，从善而为。我们在抉择一件事情之前，都需要去因地制宜。凡是不能太过武断，亦不能太拖沓。<br><a id="more"></a><br>　　最近一直在学习研究Dagger2,不单单因为其上手较难，更因为对他好处的模糊理解。导致最近虽然已经掌握框架的搭建，但是仍然未引入工程。并且对比rxjava,rxAndroid,mvp这些三方库和框架，你会发现它受众面好像并不大，真正的引入到自己工程的也并不多。最近的探究，总算摸清了点眉目。</p>
-<p>注：这篇文章比较适合已经对依赖注入和dagger2有一定了解的同学借鉴。重要的事情说一遍。</p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>　　在开篇之前，我这里先列举一个问题，也是我之前的困惑。</p>
+        <h1 id="RxJoke"><a href="#RxJoke" class="headerlink" title="RxJoke"></a>RxJoke</h1><blockquote>
+<p><a href="https://github.com/JDDJJ/RxJoke" target="_blank" rel="external">一个集成Rxjava,Retrofit,Mvp,以及Dagger2的开源项目</a></p>
+</blockquote>
+ <center><br><img src="http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_ic_launcher.png" alt="Rxjoke"></center>
+
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一直在研究和学习，也一直有想做一个开源项目，将消化的知识运用出来，俗话说“纸上得来终觉浅，绝知此事要躬行”，所以就做了这样一个项目，结合了一些开源框架和三方库，比如大家熟知的MVP,Rxjava等，做了一个笑话大全。力争“简约而不简单吧”。<br><a id="more"></a></p>
+<h1 id="工程目录"><a href="#工程目录" class="headerlink" title="工程目录"></a>工程目录</h1><p><img src="http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_pro.png" alt="工程目录"></p>
+<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><blockquote>
+<p>Model-view-presenter，简称MVP，是电脑软件设计工程中一种对针对MVC模式，再审议后所延伸提出的一种软件设计模式。</p>
+</blockquote>
+<p>一款工程的架构，就相当于骨骼，骨架，只有骨架搭建的好，才能使整个工程富有弹性，并且逻辑清晰。这里我选用的最近比较热的MVP设计模式，并且这款模式也已经运用到我之前的企业项目中，效果卓越。对于MVP,这里推荐几篇文章。</p>
 <ol>
-<li>网上开了不少dagger2的教程，其中总会举出几个例子，解耦是我们常常看到的，依赖注入的概念也应该明白一些，dagger2其实就是将我们平常需要new（实例化）的过程，提取出来，这样就能解耦了。<br><a href="http://blog.sina.com.cn/s/blog_14b5545b90102w139.html" title="例子来源" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_14b5545b90102w139.html</a><br>比如说这篇博客就介绍了一个很简单的例子，他开头就说了这么一句“一旦我们的UserModel的创建方式发生了改变（比如需要传入Context对象到构造函数），我们就需要修改所有创建UserModel的代码”但是我发现 用了依赖注入之后，仍旧得修改所有创建User Model的代码。为什么？因为你的参数是肯定不可能是无米之炊，必须有来源。那用了dagger2后，仍然需要修改每个注入的目标类，传递参数，并且还要搭建框架，有必要么？这不是更能加繁琐么？下面我们保留这个问题，看正文。<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="从依赖注入谈起"><a href="#从依赖注入谈起" class="headerlink" title="从依赖注入谈起"></a>从依赖注入谈起</h2>存在即合理，我怀疑是不是我进入某个误区了。那我就希望能走出误区，或者说是看看到底它的好处是什么？</li>
+<li><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0227/2503.html" title="Android中的MVP" target="_blank" rel="external">Android中的MVP</a></li>
+<li><a href="http://blog.csdn.net/guxiao1201/article/details/40147209" title="Android开发MVP模式解析" target="_blank" rel="external">Android开发MVP模式解析</a></li>
+<li><a href="http://blog.csdn.net/vector_yi/article/details/24719873" title="MVP模式在Android开发中的应用" target="_blank" rel="external">MVP模式在Android开发中的应用</a></li>
 </ol>
-<p>这里我就抛开所谓的dagger2，我们从依赖注入的好处去看。什么是依赖注入，网络上有许多定义，或长或短，而我教推崇这篇文章里的讲解<a href="http://www.cnblogs.com/leoo2sk/archive/2009/06/17/1504693.html" title="依赖注入那些事" target="_blank" rel="external">http://www.cnblogs.com/leoo2sk/archive/2009/06/17/1504693.html</a><br>依赖注入（Dependency Injection），是这样一个过程：由于某客户类只依赖于服务类的一个接口，而不依赖于具体服务类，所以客户类只定义一个注入点。在程序运行过程中，客户类不直接实例化具体服务类实例，而是客户类的运行上下文环境或专门组件负责实例化服务类，然后将其注入到客户类中，保证客户类的正常运行。（这里的客户类，服务类就是经常看到的A中实例化了B,A就依赖于B,A就是客户，B就是服务）<br>这样就解决了“客户类不准实例化具体服务类”和“客户类需要具体服务类”这样一对矛盾。</p>
-<h2 id="后语"><a href="#后语" class="headerlink" title="后语"></a>后语</h2><p>抄录古诗一首，愿大家在这个春天里保持好的心情，身体健康。</p>
-<center><pre><code><br>钱塘湖春行<br>白居易<br>孤山寺北贾亭西，水面初平云脚低。<br>几处早莺争暖树，谁家新燕啄春泥。<br>乱花渐欲迷人眼，浅草才能没马蹄。<br>最爱湖东行不足，绿杨阴里白沙堤。<br></code></pre></center>
+<h2 id="数据源API"><a href="#数据源API" class="headerlink" title="数据源API"></a>数据源API</h2><blockquote>
+<p><a href="http://apistore.baidu.com/" title="API Store,为开发者提供最全面的API服务" target="_blank" rel="external">API Store,为开发者提供最全面的API服务</a></p>
+</blockquote>
+<p>巧妇难为无米之炊，做一个项目，数据的来源是很重要的，不论B/S,C/S结构，其中server都是提供数据来源的。而这里我是从<a href="http://apistore.baidu.com/astore/classificationservicelist.html" title="百度Api集市" target="_blank" rel="external"><strong>百度Api集市</strong></a>搜索的<a href="http://apistore.baidu.com/apiworks/servicedetail/864.html" title="笑话大全APi" target="_blank" rel="external"><strong>笑话大全API</strong></a>。</p>
+<ol>
+<li>Api获取数据源（Json数据）</li>
+<li>利用GsonFormat生成Entity即JavaBean</li>
+</ol>
+<p>这里由于结合了rxjava,所以model层也就上面获取的javabean,获取数据的代码我放到了presenter层。</p>
+<blockquote>
+<p> <a href="http://blog.csdn.net/dakaring/article/details/46300963" title="GsonFormat" target="_blank" rel="external">插件GsonFormat快速实现JavaBean</a></p>
+</blockquote>
+<h2 id="获取数据"><a href="#获取数据" class="headerlink" title="获取数据"></a>获取数据</h2><blockquote>
+<p>Retrofit – Java(Android) 的REST 接口封装类库</p>
+<p>RxJava  –  一个在 Java VM 上使用可观测的序列来组成异步的、基于事件的程序的库</p>
+</blockquote>
+<p>获取数据方面（Presenter层）我利用了retrofit2+rxjava,之前用过volley框架，okhttp框架，感觉是个有所长，retrofit2给我的感觉就是分层清晰。<br>而rxjava，对于有一定开发经验的程序员来说。还是挺轻松的，并且利用响应式开发，你会发现以前的很多需要回调来回调去的事情变得简单轻松。<br>这里也推几篇文章。</p>
+<ol>
+<li><a href="http://gank.io/post/560e15be2dca930e00da1083#toc_5" title="给 Android 开发者的 RxJava 详解" target="_blank" rel="external">给 Android 开发者的 RxJava 详解(扔物线)</a></li>
+<li><a href="http://www.itnose.net/detail/6422757.html" title="RxAndroid和RxJava的资料分享" target="_blank" rel="external">RxAndroid和RxJava的资料分享</a></li>
+<li><a href="http://blog.csdn.net/biezhihua/article/details/49232289" title="好用的网络请求库Retrofit2（入门及讲解）" target="_blank" rel="external">好用的网络请求库Retrofit2（入门及讲解）</a></li>
+<li><a href="http://gank.io/post/56e80c2c677659311bed9841?from=timeline&amp;isappinstalled=0&amp;nsukey=g1D1Y6PMp3BW%2B0%2F%2Butx4StSJxcUCTm4%2BN8T7LnPNCCeQEY1lzm6oKvXdbrlAD4E9T%2FB1quV75jJB7H9zjcRxTQ%3D%3D" title="RxJava 与 Retrofit 结合的最佳实践" target="_blank" rel="external"> RxJava 与 Retrofit 结合的最佳实践</a></li>
+<li><a href="http://www.tuicool.com/articles/qqMbee" title="当钢铁侠反应更灵敏-RxJava" target="_blank" rel="external">当钢铁侠反应更灵敏-RxJava</a><h2 id="UI层"><a href="#UI层" class="headerlink" title="UI层"></a>UI层</h2><blockquote>
+<p>谷歌推出了全新的设计语言Material Design</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>butterknife注解框架的偷懒插件</p>
+</blockquote>
+<p>UI显示层，利用了已经普及的Material Design中的设计规范，以及一些常用控件，如RecycleView,SwipeRefreshlayout等。完成了上拉加载，下拉刷新等功能，并且利用了butterknife，用来快速注入视图。<br><img src="http://img0.tuicool.com/JfQ73eI.gif" alt="ButterKnife插件使用"></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li>Leakcanary -内存泄露检测工具 LeakCanary 这里提一下，问什么要用这个，首先，工作之后，发现一款应用，不论你代码写的多好，多美，多优雅，都不如给用户带来良好体验更重要，而用户体验一般体现在两点，一是界面美观，二则是操作流畅，也即性能良好，当一个工程越来越大，你会发现，性能问题也就成了重中之重。所以这里推荐一下。当然你会利用MAT监控内存也不错哦。</li>
+<li>Glide 图片加载框架（对比其他如picasso，imageloader更优）</li>
+<li>Dagger2 依赖注入框架</li>
+</ol>
+<p>这里着重说一下依赖注入框架Dagger2,这可以说是项目中较难上手的，并且在安卓中优点不明确的一个框架，我曾经花了大量时间去理解并尝试写一篇文章去谈一谈当它运用到实际项目中时，给我们带来的好处，目前也在消化中，发现目前网上大量文章所说的都有一些误区。但是现在我还未将它引入这个项目，当然这里推荐一篇文章</p>
+<blockquote>
+<p><a href="http://www.cnblogs.com/leoo2sk/archive/2009/06/17/1504693.html" title="依赖注入那些事儿" target="_blank" rel="external">依赖注入那些事儿</a></p>
+</blockquote>
+<p>当你进入误区的时候，尝试从其根源出发，会有意想不到的收获，大家先不去了解Dagger2，而是尝试理解依赖注入。</p>
+<p>后期我会将dagger2引入工程。</p>
+<h2 id="后话"><a href="#后话" class="headerlink" title="后话"></a>后话</h2><p>以上是开源项目RxJoke的一些简介，有希望了解更多的可以Fork一下，未来一段时间我会继续推进项目的进程，优化以及更细。比如缓存框架，热更新框架等等。</p>
+<h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><img src="http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_copyright.png" width="308" height="548"><br><img src="http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_main.png" width="308" height="548"></p>
+<p><img src="http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_icon.png" width="308" height="548"><br><img src="http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_error.png" width="308" height="548"></p>
+
       
     </div>
 
@@ -309,7 +381,9 @@
           
             <a href="/tags/Android/" rel="tag">#Android</a>
           
-            <a href="/tags/Dagger2/" rel="tag">#Dagger2</a>
+            <a href="/tags/MVP/" rel="tag">#MVP</a>
+          
+            <a href="/tags/RxJava/" rel="tag">#RxJava</a>
           
         </div>
       
@@ -318,17 +392,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/31/callback/" rel="next" title="浅谈回调接口">
-                <i class="fa fa-chevron-left"></i> 浅谈回调接口
+              <a href="/2016/04/06/WhyDagger2/" rel="next" title="WhyDagger2">
+                <i class="fa fa-chevron-left"></i> WhyDagger2
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/23/RxJoke/" rel="prev" title="RxJoke:RxJava+MVP的开源项目">
-                RxJoke:RxJava+MVP的开源项目 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -360,8 +430,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/06/WhyDagger2/"
-           data-title="WhyDagger2" data-url="http://jddjj.github.io/2016/04/06/WhyDagger2/">
+      <div class="ds-thread" data-thread-key="2016/04/23/RxJoke/"
+           data-title="RxJoke:RxJava+MVP的开源项目" data-url="http://jddjj.github.io/2016/04/23/RxJoke/">
       </div>
     
   </div>
@@ -514,7 +584,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">3.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#从依赖注入谈起"><span class="nav-number">3.1.</span> <span class="nav-text">从依赖注入谈起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后语"><span class="nav-number">3.2.</span> <span class="nav-text">后语</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#RxJoke"><span class="nav-number">1.</span> <span class="nav-text">RxJoke</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.1.</span> <span class="nav-text">前言</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工程目录"><span class="nav-number">2.</span> <span class="nav-text">工程目录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#整体架构"><span class="nav-number">2.1.</span> <span class="nav-text">整体架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据源API"><span class="nav-number">2.2.</span> <span class="nav-text">数据源API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取数据"><span class="nav-number">2.3.</span> <span class="nav-text">获取数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI层"><span class="nav-number">2.4.</span> <span class="nav-text">UI层</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">2.5.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后话"><span class="nav-number">2.6.</span> <span class="nav-text">后话</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#截图"><span class="nav-number">2.7.</span> <span class="nav-text">截图</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

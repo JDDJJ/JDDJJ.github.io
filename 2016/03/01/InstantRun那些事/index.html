@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Android,Dagger2," />
+  <meta name="keywords" content="AndroidDevTools," />
 
 
 
@@ -59,19 +59,23 @@
 
 
 
-<meta name="description" content="两利相权取其重，两弊相衡取其轻——古语
-序言 　　权衡利弊，从善而为。我们在抉择一件事情之前，都需要去因地制宜。凡是不能太过武断，亦不能太拖沓。">
+<meta name="description" content="刚入门的Android学员，现在应该还在玩转Eclipse，虽然现在大部分开发人员已经手持Android Studio ,但人们对新事物的接受总是需要缓冲的，并且有的人“恋旧”，并不是说不好，但是在技术更新迭代这么快的时代，不一定好，尝试总是没错的，你可以不做第一个吃螃蟹的人，但是有好多人说，螃蟹是美味的，那你就应该试试了。Android系统是由谷歌研发并维护，而作为谷歌推出的Android">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WhyDagger2">
-<meta property="og:url" content="http://jddjj.github.io/2016/04/06/WhyDagger2/index.html">
+<meta property="og:title" content="InstantRun那些事">
+<meta property="og:url" content="http://jddjj.github.io/2016/03/01/InstantRun那些事/index.html">
 <meta property="og:site_name" content="JDD">
-<meta property="og:description" content="两利相权取其重，两弊相衡取其轻——古语
-序言 　　权衡利弊，从善而为。我们在抉择一件事情之前，都需要去因地制宜。凡是不能太过武断，亦不能太拖沓。">
-<meta property="og:updated_time" content="2016-04-23T08:32:35.640Z">
+<meta property="og:description" content="刚入门的Android学员，现在应该还在玩转Eclipse，虽然现在大部分开发人员已经手持Android Studio ,但人们对新事物的接受总是需要缓冲的，并且有的人“恋旧”，并不是说不好，但是在技术更新迭代这么快的时代，不一定好，尝试总是没错的，你可以不做第一个吃螃蟹的人，但是有好多人说，螃蟹是美味的，那你就应该试试了。Android系统是由谷歌研发并维护，而作为谷歌推出的Android">
+<meta property="og:image" content="http://7xsffo.com1.z0.glb.clouddn.com/instantrun1.png">
+<meta property="og:image" content="http://7xsffo.com1.z0.glb.clouddn.com/instantrun6.png">
+<meta property="og:image" content="http://7xsffo.com1.z0.glb.clouddn.com/instantrun2.png">
+<meta property="og:image" content="http://7xsffo.com1.z0.glb.clouddn.com/instantrun5.png">
+<meta property="og:image" content="http://7xsffo.com1.z0.glb.clouddn.com/instantrun4.png">
+<meta property="og:image" content="http://7xsffo.com1.z0.glb.clouddn.com/instantrun3.png">
+<meta property="og:updated_time" content="2016-04-23T08:31:53.851Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WhyDagger2">
-<meta name="twitter:description" content="两利相权取其重，两弊相衡取其轻——古语
-序言 　　权衡利弊，从善而为。我们在抉择一件事情之前，都需要去因地制宜。凡是不能太过武断，亦不能太拖沓。">
+<meta name="twitter:title" content="InstantRun那些事">
+<meta name="twitter:description" content="刚入门的Android学员，现在应该还在玩转Eclipse，虽然现在大部分开发人员已经手持Android Studio ,但人们对新事物的接受总是需要缓冲的，并且有的人“恋旧”，并不是说不好，但是在技术更新迭代这么快的时代，不一定好，尝试总是没错的，你可以不做第一个吃螃蟹的人，但是有好多人说，螃蟹是美味的，那你就应该试试了。Android系统是由谷歌研发并维护，而作为谷歌推出的Android">
+<meta name="twitter:image" content="http://7xsffo.com1.z0.glb.clouddn.com/instantrun1.png">
 
 
 
@@ -89,7 +93,7 @@
   };
 </script>
 
-  <title> WhyDagger2 | JDD </title>
+  <title> InstantRun那些事 | JDD </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -219,7 +223,7 @@
             
             
               
-                WhyDagger2
+                InstantRun那些事
               
             
           </h1>
@@ -231,38 +235,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-06T20:46:25+08:00" content="2016-04-06">
-              2016-04-06
+            <time itemprop="dateCreated" datetime="2016-03-01T20:46:25+08:00" content="2016-03-01">
+              2016-03-01
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Android/" itemprop="url" rel="index">
-                    <span itemprop="name">Android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/04/06/WhyDagger2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/06/WhyDagger2/" itemprop="commentsCount"></span>
+                <a href="/2016/03/01/InstantRun那些事/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/01/InstantRun那些事/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -284,16 +269,21 @@
       
 
       
-        <p><em>两利相权取其重，两弊相衡取其轻</em><br><em>——古语</em></p>
-<h1 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h1><p> 　　权衡利弊，从善而为。我们在抉择一件事情之前，都需要去因地制宜。凡是不能太过武断，亦不能太拖沓。<br><a id="more"></a><br>　　最近一直在学习研究Dagger2,不单单因为其上手较难，更因为对他好处的模糊理解。导致最近虽然已经掌握框架的搭建，但是仍然未引入工程。并且对比rxjava,rxAndroid,mvp这些三方库和框架，你会发现它受众面好像并不大，真正的引入到自己工程的也并不多。最近的探究，总算摸清了点眉目。</p>
-<p>注：这篇文章比较适合已经对依赖注入和dagger2有一定了解的同学借鉴。重要的事情说一遍。</p>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>　　在开篇之前，我这里先列举一个问题，也是我之前的困惑。</p>
-<ol>
-<li>网上开了不少dagger2的教程，其中总会举出几个例子，解耦是我们常常看到的，依赖注入的概念也应该明白一些，dagger2其实就是将我们平常需要new（实例化）的过程，提取出来，这样就能解耦了。<br><a href="http://blog.sina.com.cn/s/blog_14b5545b90102w139.html" title="例子来源" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_14b5545b90102w139.html</a><br>比如说这篇博客就介绍了一个很简单的例子，他开头就说了这么一句“一旦我们的UserModel的创建方式发生了改变（比如需要传入Context对象到构造函数），我们就需要修改所有创建UserModel的代码”但是我发现 用了依赖注入之后，仍旧得修改所有创建User Model的代码。为什么？因为你的参数是肯定不可能是无米之炊，必须有来源。那用了dagger2后，仍然需要修改每个注入的目标类，传递参数，并且还要搭建框架，有必要么？这不是更能加繁琐么？下面我们保留这个问题，看正文。<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="从依赖注入谈起"><a href="#从依赖注入谈起" class="headerlink" title="从依赖注入谈起"></a>从依赖注入谈起</h2>存在即合理，我怀疑是不是我进入某个误区了。那我就希望能走出误区，或者说是看看到底它的好处是什么？</li>
-</ol>
-<p>这里我就抛开所谓的dagger2，我们从依赖注入的好处去看。什么是依赖注入，网络上有许多定义，或长或短，而我教推崇这篇文章里的讲解<a href="http://www.cnblogs.com/leoo2sk/archive/2009/06/17/1504693.html" title="依赖注入那些事" target="_blank" rel="external">http://www.cnblogs.com/leoo2sk/archive/2009/06/17/1504693.html</a><br>依赖注入（Dependency Injection），是这样一个过程：由于某客户类只依赖于服务类的一个接口，而不依赖于具体服务类，所以客户类只定义一个注入点。在程序运行过程中，客户类不直接实例化具体服务类实例，而是客户类的运行上下文环境或专门组件负责实例化服务类，然后将其注入到客户类中，保证客户类的正常运行。（这里的客户类，服务类就是经常看到的A中实例化了B,A就依赖于B,A就是客户，B就是服务）<br>这样就解决了“客户类不准实例化具体服务类”和“客户类需要具体服务类”这样一对矛盾。</p>
-<h2 id="后语"><a href="#后语" class="headerlink" title="后语"></a>后语</h2><p>抄录古诗一首，愿大家在这个春天里保持好的心情，身体健康。</p>
-<center><pre><code><br>钱塘湖春行<br>白居易<br>孤山寺北贾亭西，水面初平云脚低。<br>几处早莺争暖树，谁家新燕啄春泥。<br>乱花渐欲迷人眼，浅草才能没马蹄。<br>最爱湖东行不足，绿杨阴里白沙堤。<br></code></pre></center>
+        <p>　　刚入门的Android学员，现在应该还在玩转Eclipse，虽然现在大部分开发人员已经手持Android Studio ,但人们对新事物的接受总是需要缓冲的，并且有的人“恋旧”，并不是说不好，但是在技术更新迭代这么快的时代，不一定好，尝试总是没错的，你可以不做第一个吃螃蟹的人，但是有好多人说，螃蟹是美味的，那你就应该试试了。Android系统是由谷歌研发并维护，而作为谷歌推出的Android Studio 是自己个儿的亲儿子，广大开发人员不用去担心它的更新迭代是否被放弃。而现在的Android Studio已经进入2.0.0-beta6 版本，稳定性和扩展性已经非常强大，玩过Eclipse的都知道，经常会碰到缺少一些sdk的时候，这个时候我们就需要打开SDK Manager 去下载，这个界面大家一定很熟悉<br><img src="http://7xsffo.com1.z0.glb.clouddn.com/instantrun1.png" alt=""><br>  <center><strong><em>SDK Manager</em></strong></center><br>               <a id="more"></a></p>
+<p>，但是你有没有为下载过慢烦恼过，又找不到好的翻墙技巧，还有就是插件更新，经常需要去网络上下载离线包，查看各种教程去安装，还有用惯了Android Studio 感觉Eclipse界面好丑。这里并不是去贬低Eclipse，存在即合理，强大的扩展性和开源性，使其仍是开发Jsp，封装cocos2dx等得不可或缺的工具。并且现在仍有一些长久的项目，是eclipse开发的，应为项目过大并且已经成熟，并不适合迁移至Android Studio。      但是，对于以后从事Android开发，和新入门的同学，掌握Android Studio吧！你不会后悔的！说到这里，给大家附上一个链接，最新版本的Android开发相关工具都可以去这里下<a href="http://www.androiddevtools.cn/" target="_blank" rel="external">AndroidDevTools</a>;配置Android Studio方面就不进行赘述了，大家下载完可以去网上搜索很多好玩的插件，ButterKnife,CodeGlance,LifeSorter等等有助于编码的插件<br><img src="http://7xsffo.com1.z0.glb.clouddn.com/instantrun6.png" alt=""></p>
+<center><strong><em>Android Studio Plugins</em></strong></center>
+
+<p>　　下面就是重点讲解下2.0版本一来，卖点最热的Instant Run，Instant Run 其实跟现如今流行的“HotFix”——热更新很像，它能实现让我们不需要重启App就能更新我们的修改，你是否还在为为了研究某个界面，改动之后必须重新运行，然后手动一个个跳转到你的研究界面上而不耐烦的等待呢？试试Instant Run吧！2.0.0从preview1到9 我都试过，更新版本之快基本隔三四天就是一个，直到现在比较稳定的2.0.0-beta6版本。期间经历过用Instant Run编译上一个版本构建的工程都报错的问题，经历过xml不提示双引号的bug,挺过来了，现在Instant Run下运行的状态</p>
+<center><img src="http://7xsffo.com1.z0.glb.clouddn.com/instantrun2.png" alt=""></center>
+
+
+<p>　　这个闪电符号就是我们开发效率提升的保证了，并且那个瓢虫样子的图标（Debug模式）也可以Instant Run。         我们要用Instant Run，首先要配置你的工程gradle plugin至2.0以后对应的版本，打开对应的ModuleSetting，将对应的配置设置到最新即可，如图<br><img src="http://7xsffo.com1.z0.glb.clouddn.com/instantrun5.png" alt=""></p>
+<center><strong><em>配置</em></strong></center>
+
+<p>还有就是启用Instant Run 打开Setting<br><img src="http://7xsffo.com1.z0.glb.clouddn.com/instantrun4.png" alt=""><br>　　　　　　　　　　　　　　　<center><strong><em>配置</em></strong></center></p>
+<p>　　好了，大功告成，你可以创建新的应用，或者直接按上述配置，配置好你曾经的应用，这样可以进行Instant Run了，比如说你改变了布局上的文字，直接再次点击闪电小图标，log控制台输出如下，说明你运行成功了，看看你的应用，没有重启吧，它只更新了当前Activity<br><img src="http://7xsffo.com1.z0.glb.clouddn.com/instantrun3.png" alt=""><br>　　　　　　　　　　　　　<center><strong><em>log控制台输出</em></strong></center></p>
+<p> 　　但是还有一些情况是不能支持Instant Run的，比如说AndroidManifest文件更改，R文件更改，添加了新的资源文件等等，但是你会发现，2.0版本仍然比以前运行快很多。所以不要注意这些细节，快来玩转吧。ps:有时候，由于项目过大，可能某些三方或者构建方面的修改导致不能运行Instant Run，比如我上次运用retrolambda,就不能在用Instant Run 了，但发现虽然需要重新启动应用程序，仍然很快，也就没有去调试是哪里的问题。</p>
+
       
     </div>
 
@@ -307,9 +297,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag">#Android</a>
-          
-            <a href="/tags/Dagger2/" rel="tag">#Dagger2</a>
+            <a href="/tags/AndroidDevTools/" rel="tag">#AndroidDevTools</a>
           
         </div>
       
@@ -318,16 +306,12 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/31/callback/" rel="next" title="浅谈回调接口">
-                <i class="fa fa-chevron-left"></i> 浅谈回调接口
-              </a>
-            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/23/RxJoke/" rel="prev" title="RxJoke:RxJava+MVP的开源项目">
-                RxJoke:RxJava+MVP的开源项目 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/31/callback/" rel="prev" title="浅谈回调接口">
+                浅谈回调接口 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -360,8 +344,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/04/06/WhyDagger2/"
-           data-title="WhyDagger2" data-url="http://jddjj.github.io/2016/04/06/WhyDagger2/">
+      <div class="ds-thread" data-thread-key="2016/03/01/InstantRun那些事/"
+           data-title="InstantRun那些事" data-url="http://jddjj.github.io/2016/03/01/InstantRun那些事/">
       </div>
     
   </div>
@@ -514,7 +498,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序言"><span class="nav-number">1.</span> <span class="nav-text">序言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">2.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正文"><span class="nav-number">3.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#从依赖注入谈起"><span class="nav-number">3.1.</span> <span class="nav-text">从依赖注入谈起</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后语"><span class="nav-number">3.2.</span> <span class="nav-text">后语</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
