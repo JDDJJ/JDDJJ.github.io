@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://jddjj.github.io/"/>
-  <updated>2016-04-23T08:34:08.796Z</updated>
+  <updated>2016-04-24T14:40:26.884Z</updated>
   <id>http://jddjj.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://jddjj.github.io/2016/04/23/RxJoke/"/>
     <id>http://jddjj.github.io/2016/04/23/RxJoke/</id>
     <published>2016-04-23T08:27:25.000Z</published>
-    <updated>2016-04-23T08:34:08.796Z</updated>
+    <updated>2016-04-24T14:40:26.884Z</updated>
     
     <content type="html">&lt;h1 id=&quot;RxJoke&quot;&gt;&lt;a href=&quot;#RxJoke&quot; class=&quot;headerlink&quot; title=&quot;RxJoke&quot;&gt;&lt;/a&gt;RxJoke&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/JDDJJ/RxJoke&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;一个集成Rxjava,Retrofit,Mvp,以及Dagger2的开源项目&lt;/a&gt;&lt;/p&gt;
@@ -81,7 +81,7 @@
 &lt;p&gt;当你进入误区的时候，尝试从其根源出发，会有意想不到的收获，大家先不去了解Dagger2，而是尝试理解依赖注入。&lt;/p&gt;
 &lt;p&gt;后期我会将dagger2引入工程。&lt;/p&gt;
 &lt;h2 id=&quot;后话&quot;&gt;&lt;a href=&quot;#后话&quot; class=&quot;headerlink&quot; title=&quot;后话&quot;&gt;&lt;/a&gt;后话&lt;/h2&gt;&lt;p&gt;以上是开源项目RxJoke的一些简介，有希望了解更多的可以Fork一下，未来一段时间我会继续推进项目的进程，优化以及更细。比如缓存框架，热更新框架等等。&lt;/p&gt;
-&lt;h2 id=&quot;截图&quot;&gt;&lt;a href=&quot;#截图&quot; class=&quot;headerlink&quot; title=&quot;截图&quot;&gt;&lt;/a&gt;截图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_copyright.png&quot; width=&quot;308&quot; height=&quot;548&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_main.png&quot; width=&quot;308&quot; height=&quot;548&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;截图&quot;&gt;&lt;a href=&quot;#截图&quot; class=&quot;headerlink&quot; title=&quot;截图&quot;&gt;&lt;/a&gt;截图&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xsffo.com1.z0.glb.clouddn.com/app_copyright_jdd.png&quot; width=&quot;308&quot; height=&quot;548&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_main.png&quot; width=&quot;308&quot; height=&quot;548&quot;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_icon.png&quot; width=&quot;308&quot; height=&quot;548&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://7xsffo.com1.z0.glb.clouddn.com/rxjoke_error.png&quot; width=&quot;308&quot; height=&quot;548&quot;&gt;&lt;/p&gt;
 </content>
     
